@@ -2,7 +2,7 @@
 
 ## 🌟 Project Overview
 
-This repository contains a full-stack note-taking application built using Django(DRF) for the backend and ReactJS for the frontend. The application allows users to create, read, update, pin, unpin and delete notes efficiently.
+This repository contains a full-stack note-taking application built using Django (DRF) for the backend and ReactJS for the frontend. It features secure user authentication with JWT, allowing users to register, log in, and logout. The application enables seamless CRUD operations on notes, including creating, reading, updating, deleting, pinning and unpinning. Additionally, it supports token management, automatic token refresh, and blacklist handling for enhanced security.
 
 ## 🚀 Project Architecture
 
@@ -73,7 +73,7 @@ flowchart TD
 - Node.js 18+
 - Sqlite3
 
-### Backend Setup
+### Backend Setup (Please follow the backend steps carefully and stepwise)
 ```bash
 # Clone the repository
 git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
