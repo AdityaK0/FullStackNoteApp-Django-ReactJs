@@ -121,11 +121,13 @@ npm install
 npm run dev
 ```
 
-### Usage
-Access the Application: Open http://localhost:5173/ in your browser.
-Register/Login: Create an account or log in.
-Manage Notes: Add, edit, delete, pin , unpin and search for notes.
-Token Management: The application automatically refreshes access tokens when needed.
+## Usage
+
+- **Access the Application**: Open [`http://localhost:5173/`](http://localhost:5173/) in your browser.  
+- **Register/Login**: Create an account or log in securely using JWT authentication.  
+- **Manage Notes**: Add, edit, delete, pin, unpin, and search for notes effortlessly.  
+- **Token Management**: The application automatically refreshes access tokens and handles blacklisting on logout for enhanced security.  
+
 
 
 
