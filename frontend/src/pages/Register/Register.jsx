@@ -4,6 +4,7 @@ import PasswordInput from '../../components/Input/PasswordInput'
 import { Link,useNavigate } from 'react-router-dom'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
+import axios from 'axios'
 
 
 function Register() {
@@ -36,7 +37,7 @@ function Register() {
 
     //signup api call
     try {
-
+      localStorage.clear()
       const response = await axiosInstance.post("/api/auth/register/",{
         username:username,
         fullname:name,
@@ -48,8 +49,8 @@ function Register() {
         return;
       }
       if (response.data && response.data.token.access) {
-         localStorage.setItem("access",response.data.token.access)
-         navigate("/")
+        //  localStorage.setItem("access",response.data.token.access)
+         navigate("/login")
       }
    
     } catch (error) {
