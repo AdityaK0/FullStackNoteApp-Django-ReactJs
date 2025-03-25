@@ -1,116 +1,128 @@
-# Full Stack Note App (Django & ReactJS)
+# Full Stack Note Application 📝
+
+## 🌟 Project Overview
 
 This repository contains a full-stack note-taking application built using Django(DRF) for the backend and ReactJS for the frontend. The application allows users to create, read, update, pin, unpin and delete notes efficiently.
 
-## Features
+## 🚀 Project Architecture
 
-- **User Authentication**: Secure user registration, login, and logout functionalities with JWT-based authentication.
-- **CRUD Operations**: Create, view, edit,(pin & unpin) and delete notes.
-- **Token Refresh & Blacklisting**: Automatic access token refresh and blacklisting upon logout.
-- **Search & Pin Notes**: Users can search and pin important notes.
-- **Responsive Design**: Optimized for various devices to provide a seamless user experience.
+```mermaid
+flowchart TD
+    A[User Interface] --> B[React Frontend]
+    B --> C[REST API Endpoints]
+    C --> D[Django Backend]
+    D --> E[PostgreSQL Database]
+    E --> F[User Authentication]
+    F --> G[Note Management]
+```
 
-## Technologies Used
+## ✨ Key Features
 
-- **Backend**: Django, Django REST Framework, Simple JWT
-- **Frontend**: ReactJS, JavaScript, HTML, CSS , TailwindCss
-- **Database**: SQLite (default, can be configured to use other databases)
+- 🔐 Secure User Authentication
+- 📝 Create, Read, Update, Delete (CRUD) Note Operations
+- 💻 Responsive and Intuitive Design
+- 🔒 Secure Backend with JWT Authentication
+- 🚀 Real-time Note Management
 
-## API Endpoints
+## 🛠 Technology Stack
 
-### Authentication Endpoints (`/api/auth/`)
+### Frontend
+- React.js
+- React Router
+- Axios
+- Bootstrap
 
-- `POST /api/auth/register/` - Register a new user.
-- `POST /api/auth/login/` - Login and obtain access & refresh tokens.
-- `POST /api/auth/logout/` - Logout and blacklist the refresh token.
-- `GET /api/auth/get-user/` - Retrieve the authenticated user's information.
-- `GET /api/auth/protectedAPI/` - Access a protected route (requires authentication).
-- `POST /api/token/refresh/` - Refresh the access token.
+### Backend
+- Django
+- Django Rest Framework
+- PostgreSQL
+- JWT Authentication
 
-### Notes Endpoints (`/api/v1/notes/`)
+## 🔄 User Workflow
 
-- `GET /api/v1/notes/` - Retrieve a list of all notes.
-- `POST /api/v1/notes/add-note/` - Create a new note.
-- `GET /api/v1/notes/<id>/` - Retrieve a specific note by ID.
-- `PUT /api/v1/notes/update/<id>/` - Update a note by ID.
-- `DELETE /api/v1/notes/delete/<id>/` - Delete a note by ID.
-- `POST /api/v1/notes/pin-note/<id>/` - Pin or unpin a note.
-- `GET /api/v1/notes/search-notes/` - Search for notes.
+```mermaid
+flowchart TD
+    A[User Visits App] --> B{Authenticated?}
+    B -->|No| C[Login/Register Page]
+    C --> D[Create Account/Login]
+    B -->|Yes| E[Dashboard]
+    E --> F[Create New Note]
+    E --> G[View Existing Notes]
+    F --> H[Save Note]
+    G --> I[Edit/Delete Note]
+    H --> E
+    I --> E
+```
 
-## Token Management & Blacklisting
+## 🛡️ Authentication Flow
 
-The application implements token management using Django REST Framework's Simple JWT:
-- Access tokens expire after a short period.
-- Refresh tokens can be used to generate new access tokens (`/api/token/refresh/`).
-- When a user logs out, the refresh token is blacklisted, ensuring it cannot be reused.
+```mermaid
+flowchart TD
+    A[User Enters Credentials] --> B{Validate Credentials}
+    B -->|Valid| C[Generate JWT Token]
+    C --> D[Store Token in Local Storage]
+    D --> E[Grant Access to Dashboard]
+    B -->|Invalid| F[Show Error Message]
+    F --> A
+```
 
-## Getting Started
+## 📦 Installation
 
 ### Prerequisites
+- Python 3.8+
+- Node.js 14+
+- PostgreSQL
 
-Ensure you have the following installed on your system:
+### Backend Setup
+```bash
+# Clone the repository
+git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
 
-- Python (preferably 3.8 or higher)
-- Node.js and npm
-- Git
+# Navigate to backend directory
+cd backend
 
-### Installation
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-#### Backend Setup
+# Install dependencies
+pip install -r requirements.txt
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
-   cd FullStackNoteApp-Django-ReactJs
-   ```
+### Follow this order to avoid migration issues due to CustomUser model dependency
 
-2. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
+# Step 1: Apply migrations for the users app
 
-3. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+python manage.py makemigrations users
+python manage.py migrate users
 
-4. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Step 2: Apply migrations for the notes app
 
-5. Apply migrations and start the backend server:
-   ```bash
-   python manage.py migrate
-   python manage.py runserver
-   ```
-   The backend will be available at `http://127.0.0.1:7070/`.
+python manage.py makemigrations notes
+python manage.py migrate notes
 
-#### Frontend Setup
+# Step 3: Apply any remaining migrations
 
-1. Open a new terminal and navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+python manage.py makemigrations
+python manage.py migrate
 
-2. Install frontend dependencies:
-   ```bash
-   npm install
-   ```
+# Run backend server
+python manage.py runserver 7070
+```
 
-3. Start the frontend server:
-   ```bash
-   npm start
-   ```
-   The frontend application will run at `http://localhost:5173/`.
+### Frontend Setup
+```bash
+# Navigate to frontend directory
+cd frontend
 
-## Usage
+# Install dependencies
+npm install
 
-- **Access the Application**: Open `http://localhost:5173/` in your browser.
-- **Register/Login**: Create an account or log in.
-- **Manage Notes**: Add, edit, delete, pin , unpin and search for notes.
-- **Token Management**: The application automatically refreshes access tokens when needed.
+# Start development server
+npm start
+```
+
+
+
 
 
 
