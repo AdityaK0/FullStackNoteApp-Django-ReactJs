@@ -11,15 +11,15 @@ flowchart TD
     A[User Interface] --> B[React Frontend]
     B --> C[REST API Endpoints]
     C --> D[Django Backend]
-    D --> E[PostgreSQL Database]
+    D --> E[Sqlite3 Database]
     E --> F[User Authentication]
     F --> G[Note Management]
 ```
 
 ## ✨ Key Features
 
-- 🔐 Secure User Authentication
-- 📝 Create, Read, Update, Delete (CRUD) Note Operations
+- 🔐 Secure User Authentication using Django Restframework JWT
+- 📝 Create, Read, Update, Pin/UnPin and Delete (CRUD) Note Operations
 - 💻 Responsive and Intuitive Design
 - 🔒 Secure Backend with JWT Authentication
 - 🚀 Real-time Note Management
@@ -28,14 +28,14 @@ flowchart TD
 
 ### Frontend
 - React.js
-- React Router
-- Axios
-- Bootstrap
+- JavaScript
+- HTML5
+- TailwindCss
 
 ### Backend
 - Django
 - Django Rest Framework
-- PostgreSQL
+- Sqlite3
 - JWT Authentication
 
 ## 🔄 User Workflow
@@ -49,7 +49,7 @@ flowchart TD
     E --> F[Create New Note]
     E --> G[View Existing Notes]
     F --> H[Save Note]
-    G --> I[Edit/Delete Note]
+    G --> I[Edit/Delete/Pin/Unpin Note]
     H --> E
     I --> E
 ```
@@ -70,8 +70,8 @@ flowchart TD
 
 ### Prerequisites
 - Python 3.8+
-- Node.js 14+
-- PostgreSQL
+- Node.js 18+
+- Sqlite3
 
 ### Backend Setup
 ```bash
@@ -81,7 +81,7 @@ git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
 # Navigate to backend directory
 cd backend
 
-# Create virtual environment
+# Create virtual environment (Optional if you have env)
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
@@ -118,8 +118,14 @@ cd frontend
 npm install
 
 # Start development server
-npm start
+npm run dev
 ```
+
+### Usage
+Access the Application: Open http://localhost:5173/ in your browser.
+Register/Login: Create an account or log in.
+Manage Notes: Add, edit, delete, pin , unpin and search for notes.
+Token Management: The application automatically refreshes access tokens when needed.
 
 
 
