@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',   # above admin because of custom model rememeber that(yaad rakhiyo)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'notes',
     'corsheaders',
     'rest_framework',
-    'users',
     'rest_framework_simplejwt.token_blacklist',
 ]
 
