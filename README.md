@@ -1,116 +1,136 @@
-# Full Stack Note App (Django & ReactJS)
+# Full Stack Note Application 📝
 
-This repository contains a full-stack note-taking application built using Django(DRF) for the backend and ReactJS for the frontend. The application allows users to create, read, update, pin, unpin and delete notes efficiently.
+## 🌟 Project Overview
 
-## Features
+This repository contains a full-stack note-taking application built using Django (DRF) for the backend and ReactJS for the frontend. It features secure user authentication with JWT, allowing users to register, log in, and logout. The application enables seamless CRUD operations on notes, including creating, reading, updating, deleting, pinning and unpinning. Additionally, it supports token management, automatic token refresh, and blacklist handling for enhanced security.
 
-- **User Authentication**: Secure user registration, login, and logout functionalities with JWT-based authentication.
-- **CRUD Operations**: Create, view, edit,(pin & unpin) and delete notes.
-- **Token Refresh & Blacklisting**: Automatic access token refresh and blacklisting upon logout.
-- **Search & Pin Notes**: Users can search and pin important notes.
-- **Responsive Design**: Optimized for various devices to provide a seamless user experience.
+## 🚀 Project Architecture
 
-## Technologies Used
+```mermaid
+flowchart TD
+    A[User Interface] --> B[React Frontend]
+    B --> C[REST API Endpoints]
+    C --> D[Django Backend]
+    D --> E[Sqlite3 Database]
+    E --> F[User Authentication]
+    F --> G[Note Management]
+```
 
-- **Backend**: Django, Django REST Framework, Simple JWT
-- **Frontend**: ReactJS, JavaScript, HTML, CSS , TailwindCss
-- **Database**: SQLite (default, can be configured to use other databases)
+## ✨ Key Features
 
-## API Endpoints
+- 🔐 Secure User Authentication using Django Restframework JWT
+- 📝 Create, Read, Update, Pin/UnPin and Delete (CRUD) Note Operations
+- 💻 Responsive and Intuitive Design
+- 🔒 Secure Backend with JWT Authentication
+- 🚀 Real-time Note Management
 
-### Authentication Endpoints (`/api/auth/`)
+## 🛠 Technology Stack
 
-- `POST /api/auth/register/` - Register a new user.
-- `POST /api/auth/login/` - Login and obtain access & refresh tokens.
-- `POST /api/auth/logout/` - Logout and blacklist the refresh token.
-- `GET /api/auth/get-user/` - Retrieve the authenticated user's information.
-- `GET /api/auth/protectedAPI/` - Access a protected route (requires authentication).
-- `POST /api/token/refresh/` - Refresh the access token.
+### Frontend
+- React.js
+- JavaScript
+- HTML5
+- TailwindCss
 
-### Notes Endpoints (`/api/v1/notes/`)
+### Backend
+- Django
+- Django Rest Framework
+- Sqlite3
+- JWT Authentication
 
-- `GET /api/v1/notes/` - Retrieve a list of all notes.
-- `POST /api/v1/notes/add-note/` - Create a new note.
-- `GET /api/v1/notes/<id>/` - Retrieve a specific note by ID.
-- `PUT /api/v1/notes/update/<id>/` - Update a note by ID.
-- `DELETE /api/v1/notes/delete/<id>/` - Delete a note by ID.
-- `POST /api/v1/notes/pin-note/<id>/` - Pin or unpin a note.
-- `GET /api/v1/notes/search-notes/` - Search for notes.
+## 🔄 User Workflow
 
-## Token Management & Blacklisting
+```mermaid
+flowchart TD
+    A[User Visits App] --> B{Authenticated?}
+    B -->|No| C[Login/Register Page]
+    C --> D[Create Account/Login]
+    B -->|Yes| E[Dashboard]
+    E --> F[Create New Note]
+    E --> G[View Existing Notes]
+    F --> H[Save Note]
+    G --> I[Edit/Delete/Pin/Unpin Note]
+    H --> E
+    I --> E
+```
 
-The application implements token management using Django REST Framework's Simple JWT:
-- Access tokens expire after a short period.
-- Refresh tokens can be used to generate new access tokens (`/api/token/refresh/`).
-- When a user logs out, the refresh token is blacklisted, ensuring it cannot be reused.
+## 🛡️ Authentication Flow
 
-## Getting Started
+```mermaid
+flowchart TD
+    A[User Enters Credentials] --> B{Validate Credentials}
+    B -->|Valid| C[Generate JWT Token]
+    C --> D[Store Token in Local Storage]
+    D --> E[Grant Access to Dashboard]
+    B -->|Invalid| F[Show Error Message]
+    F --> A
+```
+
+## 📦 Installation
 
 ### Prerequisites
+- Python 3.8+
+- Node.js 18+
+- Sqlite3
 
-Ensure you have the following installed on your system:
+### Backend Setup (Please follow the backend steps carefully and stepwise)
+```bash
+# Clone the repository
+git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
 
-- Python (preferably 3.8 or higher)
-- Node.js and npm
-- Git
+# Navigate to backend directory
+cd backend
 
-### Installation
+# Create virtual environment (Optional if you have env)
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-#### Backend Setup
+# Install dependencies
+pip install -r requirements.txt
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/AdityaK0/FullStackNoteApp-Django-ReactJs.git
-   cd FullStackNoteApp-Django-ReactJs
-   ```
+### Follow this order to avoid migration issues due to CustomUser model dependency
 
-2. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
+# Step 1: Apply migrations for the users app
 
-3. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+python manage.py makemigrations users
+python manage.py migrate users
 
-4. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Step 2: Apply migrations for the notes app
 
-5. Apply migrations and start the backend server:
-   ```bash
-   python manage.py migrate
-   python manage.py runserver
-   ```
-   The backend will be available at `http://127.0.0.1:7070/`.
+python manage.py makemigrations notes
+python manage.py migrate notes
 
-#### Frontend Setup
+# Step 3: Apply any remaining migrations
 
-1. Open a new terminal and navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+python manage.py makemigrations
+python manage.py migrate
 
-2. Install frontend dependencies:
-   ```bash
-   npm install
-   ```
+# Run backend server
+python manage.py runserver 7070
+```
 
-3. Start the frontend server:
-   ```bash
-   npm start
-   ```
-   The frontend application will run at `http://localhost:5173/`.
+### Frontend Setup
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
 
 ## Usage
 
-- **Access the Application**: Open `http://localhost:5173/` in your browser.
-- **Register/Login**: Create an account or log in.
-- **Manage Notes**: Add, edit, delete, pin , unpin and search for notes.
-- **Token Management**: The application automatically refreshes access tokens when needed.
+- **Access the Application**: Open [`http://localhost:5173/`](http://localhost:5173/) in your browser.  
+- **Register/Login**: Create an account or log in securely using JWT authentication.  
+- **Manage Notes**: Add, edit, delete, pin, unpin, and search for notes effortlessly.  
+- **Token Management**: The application automatically refreshes access tokens and handles blacklisting on logout for enhanced security.  
+
+
+
+
 
 
 
