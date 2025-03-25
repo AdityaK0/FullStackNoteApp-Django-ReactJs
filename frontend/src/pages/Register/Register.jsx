@@ -13,6 +13,8 @@ function Register() {
     const [username,setUserName] = useState("")
     const [password, setPassword] = useState("")  
     const [error, setError] = useState(null) ;
+    const [btnLoader,setBtnLoader] = useState(false)
+
     const navigate = useNavigate()
 
   const handleRegister = async (e)=>{
@@ -34,7 +36,7 @@ function Register() {
       return
     }
     setError("")
-
+    setBtnLoader(true)
     //signup api call
     try {
       localStorage.clear()
@@ -99,9 +101,15 @@ function Register() {
                {error && <p className='text-red-500 text-xs pb-1'>{error}</p>}
             </div>
 
-           <button type='submit' className='btn-primary'> 
-              Create Account
+
+            
+           <button type='submit' className='btn-primary min-h-2 max-h-10'> 
+            {btnLoader?
+               "Loading ...."
+            :"Create Account"}
+              
            </button>
+
            <p className='text-sm text-center mt-4'>
             Already have account ? {" "}
             <Link to={"/login"} className='font-medium  text-blue-500  underline'>Login</Link>

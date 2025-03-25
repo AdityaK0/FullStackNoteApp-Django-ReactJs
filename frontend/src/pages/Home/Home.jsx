@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useContext } from 'react'
 import Navbar  from '../../components/Navbar/Navbar'
 import NoteCard from '../../components/Cards/NoteCard'
 import { MdAdd, MdTry } from 'react-icons/md'
@@ -9,11 +9,13 @@ import { data, Link , useNavigate} from 'react-router-dom'
 import axiosInstance from '../../utils/axiosInstance'
 import Toast from '../../components/ToastMessage/Toast'
 import EmptyCard from '../../components/Cards/EmptyCard'
+
 import axios, { all } from 'axios'
 
 
 
 function Home() {
+  
   const [openAddEditModal,setOpenAddEditModal] = useState({
     isShown:false,
     type:"add",
@@ -165,7 +167,7 @@ function Home() {
 
   return (
     <>
-    <Navbar userInfo={userInfo} onSearchNote={onSearchNote} onSearchClear={onSearchClear} />
+    <Navbar userInfo={userInfo} onSearchNote={onSearchNote} onSearchClear={onSearchClear}  />
     <div className='container mx-auto'>
       {allNotes && allNotes.length>0 ? 
             <div className='grid grid-cols-3 gap-4 mt-8 px-2'>
@@ -174,8 +176,9 @@ function Home() {
                     <NoteCard title={element.title}
                     date={element.created_at} 
                     content={element.description}
+
                     tags= {element.tags ? element.tags.split(",").map(tag => tag) : []} 
-                    // catergory = {el.catergory}
+                    category = {element.category}
                     isPinned={element.ispinned}
                     onEdit={()=>{handleEditNote(element)}}
                     onDelete={()=>{deleteNote(element)}}
@@ -187,16 +190,17 @@ function Home() {
               </div> 
             :<EmptyCard 
             imgSrc={isSearch?"/no-notes.svg":"/add-notes.svg"} 
-            message={isSearch?`No Notes Found as per the given SEARCH query`:`Start Creating your first note click the 'Add' button to join thoughts , ideas and reminders . Let's Get started !` }
+            message={isSearch?`No Notes Found as per the given SEARCH query`:`Start Creating your first note click the right bottom  'Add' button to join thoughts , ideas and reminders . Let's Get started !` }
+            extramessage = {userInfo?"":"Please Login/Register then proceed"}
                         />}
 
-
-      <button className='w-16 h-16 flex items-center  justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 absolute right-10 bottom-10 ' 
+      
+     { userInfo ? <button className='w-16 h-16 flex items-center  justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 absolute right-10 bottom-10 ' 
       onClick={()=>{
         setOpenAddEditModal({isShown:true,type:"add",data:null}); 
       }}>
         <MdAdd className='text-[32px] text-white'/>
-      </button>
+      </button> : null}
 
       <Modal
                isOpen = {openAddEditModal.isShown}
@@ -209,7 +213,7 @@ function Home() {
               }}
       
               contentLabel=""
-              className="w-[40%] max-h-4/4  bg-white rounded-md mx-auto mt-14 p-5 "
+              className="w-[35%] min-w-[350px] h-auto max-h-[80vh] bg-white rounded-lg shadow-lg mx-auto mt-16 p-4"
       >
 
          

@@ -92,9 +92,9 @@ function AddEditNotes({getAllNotes,data,type,onClose,showToastMesage}) {
   }
 
   return (
-    <div className='relative'>
+    <div className='relative p-2'>
          <button
-         className='w-10 h-10 cursor-pointer  rounded-full flex items-center justify-center  absolute -top-3 -right-3 hover:bg-slate-500'
+         className='w-8 h-8 cursor-pointer text-black  rounded-full flex items-center justify-center  text-sm  absolute -top-3 -right-3 hover:bg-gray-500 '
          onClick={onClose}
          >
           <MdClose className='text-xl text-slate-400'/>
@@ -102,7 +102,7 @@ function AddEditNotes({getAllNotes,data,type,onClose,showToastMesage}) {
         <div  className='flex flex-col gap-2'>
           <label htmlFor="" className='input-label'>TITLE</label>
           <input type="text"
-           className='text=2xl text-slate-950 outline-none'
+           className='text-[14px] shadow-xs shadow-black text-slate-950 outline-none  rounded px-2 py-2'
            placeholder='Go To Gym At 5'
            value={title}
            onChange={({target})=>setTitle(target.value)}
@@ -114,7 +114,7 @@ function AddEditNotes({getAllNotes,data,type,onClose,showToastMesage}) {
           <label htmlFor="category" className="input-label">CATEGORY</label>
           <select
             id="category"
-            className="text text-slate-950 outline-none"
+            className="text-[14px] shadow-xs shadow-black text-slate-950 outline-none  rounded px-2 py-2"
             value={category}
             onChange={({ target }) => SetCategory(target.value)}
           >
@@ -130,9 +130,9 @@ function AddEditNotes({getAllNotes,data,type,onClose,showToastMesage}) {
           <label htmlFor="" className='input-label'>description</label>
           <textarea 
              type="text"
-             className='text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded'
+             className='text-sm text-slate-950 outline-none bg-slate-50 p-2  shadow-xs shadow-black rounded px-2 py-2'
              placeholder='description'
-             rows={10}
+             rows={4}
              value={description}
              onChange={({target})=>setdescription(target.value)}
 

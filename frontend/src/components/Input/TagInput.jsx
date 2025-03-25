@@ -53,7 +53,7 @@ function TagInput({ tags = [], setTags }) {
       <div className="flex items-center gap-4 mt-3">
         <input
           type="text"
-          className="text-sm bg-transparent border px-3 py-2 rounded outline-none"
+          className="text-sm bg-transparent shadow-xs shadow-black px-3 py-2 rounded outline-none"
           placeholder="Add tags"
           value={inputValue}
           onChange={handleInputChange}
