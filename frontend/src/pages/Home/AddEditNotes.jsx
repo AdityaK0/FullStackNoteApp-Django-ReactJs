@@ -92,9 +92,9 @@ function AddEditNotes({getAllNotes,data,type,onClose,showToastMesage}) {
   }
 
   return (
-    <div className='relative p-2'>
+    <div className='relative p-2 outline-none'>
          <button
-         className='w-8 h-8 cursor-pointer text-black  rounded-full flex items-center justify-center  text-sm  absolute -top-3 -right-3 hover:bg-gray-500 '
+         className='w-8 h-8  cursor-pointer text-black  rounded-full flex items-center justify-center   text-sm  absolute -top-3 -right-3 hover:bg-gray-500 '
          onClick={onClose}
          >
           <MdClose className='text-xl text-slate-400'/>

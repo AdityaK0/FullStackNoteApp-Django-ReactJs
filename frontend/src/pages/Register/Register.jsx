@@ -68,7 +68,7 @@ function Register() {
   return (
     <>
     <Navbar/>
-    <div className='flex items-center justify-center mt-20'>
+    <div className='flex items-center justify-center mt-20 h-96'>
       <div className='w-96 border rounded bg-white px-7 py-10'>
         <form onSubmit={handleRegister}>
            <h4 className='text-2xl mb-7 text-center' >Register</h4>

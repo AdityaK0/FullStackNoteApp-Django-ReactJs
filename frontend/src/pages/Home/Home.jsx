@@ -213,7 +213,7 @@ function Home() {
               }}
       
               contentLabel=""
-              className="w-[35%] min-w-[350px] h-auto max-h-[80vh] bg-white rounded-lg shadow-lg mx-auto mt-16 p-4"
+              className="w-[35%] min-w-[350px] min-h-80vh overflow-y-auto max-h-[80vh] bg-white rounded-lg shadow-lg mx-auto mt-16 p-4 outline-none"
       >
 
          
