@@ -9,17 +9,25 @@ Link - https://noteapphub.netlify.app/login/
 
 This is a full-stack note-taking application built using Django (DRF) for the backend and ReactJS for the frontend. It features secure user authentication with JWT, allowing users to register, log in, and logout. The application enables seamless CRUD operations on notes, including creating, reading, updating, deleting, pinning and unpinning. Additionally, it supports token management, automatic token refresh, and blacklist handling for enhanced security.
 
-## Deployment 
+## Backend Deployment on AWS EC2
+The Django backend is deployed on an AWS EC2 instance using Gunicorn as the application server and Nginx as a reverse proxy. The deployment includes:
 
-This application is deployed on an AWS EC2 instance using Nginx as a reverse proxy and Gunicorn for running the Django backend. The domain is managed using DuckDNS for dynamic DNS, and Let's Encrypt SSL is used to secure HTTPS access.
+DuckDNS for a free dynamic subdomain (noteapphub.duckdns.org).
 
-Additionally:
+Let's Encrypt SSL for secure HTTPS access.
 
-Frontend is deployed on Netlify for a seamless and fast user experience.
+Gunicorn + Supervisor to manage the Django application process.
 
-Database is hosted on NeonDB, a cloud-based PostgreSQL solution for efficient and scalable data storage.
+Nginx configured as a reverse proxy for handling requests.
 
-Now, the application backend can be accessed securely at https://noteapphub.duckdns.org with full JWT authentication and a responsive note management system! 🚀
+Now, the backend can be accessed securely at https://noteapphub.duckdns.org.
+
+## Frontend Deployment on Netlify
+The React frontend is deployed on Netlify, ensuring fast and scalable hosting with automatic CI/CD.
+
+## Database Hosting on NeonDB
+The PostgreSQL database is hosted on NeonDB, a fully managed cloud database, providing high availability and performance.
+
 
 ## 🚀 Project Architecture
 
