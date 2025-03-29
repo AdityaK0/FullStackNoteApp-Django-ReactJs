@@ -1,8 +1,25 @@
 # Full Stack Note Application 📝
 
+### Application is Live! 
+Link - https://noteapphub.netlify.app/login/
+
+
+
 ## 🌟 Project Overview
 
 This is a full-stack note-taking application built using Django (DRF) for the backend and ReactJS for the frontend. It features secure user authentication with JWT, allowing users to register, log in, and logout. The application enables seamless CRUD operations on notes, including creating, reading, updating, deleting, pinning and unpinning. Additionally, it supports token management, automatic token refresh, and blacklist handling for enhanced security.
+
+## Deployment 
+
+This application is deployed on an AWS EC2 instance using Nginx as a reverse proxy and Gunicorn for running the Django backend. The domain is managed using DuckDNS for dynamic DNS, and Let's Encrypt SSL is used to secure HTTPS access.
+
+Additionally:
+
+Frontend is deployed on Netlify for a seamless and fast user experience.
+
+Database is hosted on NeonDB, a cloud-based PostgreSQL solution for efficient and scalable data storage.
+
+Now, the application backend can be accessed securely at https://noteapphub.duckdns.org with full JWT authentication and a responsive note management system! 🚀
 
 ## 🚀 Project Architecture
 
@@ -11,7 +28,7 @@ flowchart TD
     A[User Interface] --> B[React Frontend]
     B --> C[REST API Endpoints]
     C --> D[Django Backend]
-    D --> E[Sqlite3 Database]
+    D --> E[PostgreSql Database]
     E --> F[User Authentication]
     F --> G[Note Management]
 ```
@@ -35,7 +52,7 @@ flowchart TD
 ### Backend
 - Django
 - Django Rest Framework
-- Sqlite3
+- PostgreSql
 - JWT Authentication
 
 ## 🔄 User Workflow
@@ -71,7 +88,7 @@ flowchart TD
 ### Prerequisites
 - Python 3.8+
 - Node.js 18+
-- Sqlite3
+- PostgreSql
 
 ### Backend Setup (Please follow the backend steps carefully and stepwise)
 ```bash
@@ -123,7 +140,7 @@ npm run dev
 
 ## Usage
 
-- **Access the Application**: Open [`http://localhost:5173/`](http://localhost:5173/) in your browser.  
+- **Access the Application**: Open [`[https://noteapphub.netlify.app/login`](https://noteapphub.netlify.app/login) in your browser.  
 - **Register/Login**: Create an account or log in securely using JWT authentication.  
 - **Manage Notes**: Add, edit, delete, pin, unpin, and search for notes effortlessly.  
 - **Token Management**: The application automatically refreshes access tokens and handles blacklisting on logout for enhanced security.  
